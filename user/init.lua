@@ -47,6 +47,9 @@ local config = {
   --     -- setting a mapping to false will disable it
   --     -- ["<esc>"] = false,
       ["<leader>bp"] = { "<cmd>DapToggleBreakpoint<cr>", desc = "ToggleBreakpoint" },
+      -- multi-cursor
+      ["<A-K>"] = { "<cmd>call vm#commands#add_cursor_up(0, v:count1)<cr>" },
+      ["<A-J>"] = { "<cmd>call vm#commands#add_cursor_down(0, v:count1)<cr>" },
     },
     v = {
       -- relpace
@@ -81,6 +84,7 @@ local config = {
       { "othree/eregex.vim" },
       { "tpope/vim-surround" },
       { "easymotion/vim-easymotion" },
+      { "mg979/vim-visual-multi" },
       -- Debugging
       { "theHamsta/nvim-dap-virtual-text" },
       { "rcarriga/nvim-dap-ui",
@@ -116,7 +120,10 @@ local config = {
           local codelldb_path = extension_path .. 'adapter/codelldb'
           local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
           local opts = {
-            hover_actions = { auto_focus = true },
+            hover_actions = { 
+              -- whether the hover action window gets automatically focused
+              auto_focus = true 
+            },
             dap = {
               adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
             },
