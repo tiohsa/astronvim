@@ -48,6 +48,10 @@ local config = {
   --     -- ["<esc>"] = false,
       ["<leader>bp"] = { "<cmd>DapToggleBreakpoint<cr>", desc = "ToggleBreakpoint" },
     },
+    v = {
+      -- relpace
+      ["/r"] = { "y:%s/<C-r>=escape(@+, '\\/.*$^~[]')<Cr>//gc<Left><Left><Left>", desc = "Replace selected range" },
+    }
   },
 
   -- Configure plugins
