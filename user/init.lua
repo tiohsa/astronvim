@@ -46,10 +46,19 @@ local config = {
   --   t = {
   --     -- setting a mapping to false will disable it
   --     -- ["<esc>"] = false,
-      ["<leader>bp"] = { "<cmd>DapToggleBreakpoint<cr>", desc = "ToggleBreakpoint" },
       -- multi-cursor
       ["<A-K>"] = { "<cmd>call vm#commands#add_cursor_up(0, v:count1)<cr>" },
       ["<A-J>"] = { "<cmd>call vm#commands#add_cursor_down(0, v:count1)<cr>" },
+      -- dapui
+      ['<F5>'] = {'<cmd>DapContinue<CR>'},
+      ['<F10>'] = {'<cmd>DapStepOver<CR>'},
+      ['<F11>'] = {'<cmd>DapStepInto<CR>'},
+      ['<F12>'] = {'<cmd>DapStepOut<CR>'},
+      ['<leader>bb'] = {'<cmd>DapToggleBreakpoint<CR>'},
+      ['<leader>bB'] = {'<cmd>lua require("dap").set_breakpoint(nil, nil, vim.fn.input("Breakpoint condition: "))<CR>'},
+      ['<leader>bl'] = {'<cmd>lua require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>'},
+      ['<leader>bp'] = {'<cmd>lua require("dap").repl.open()<CR>'},
+      ['<leader>br'] = {'<cmd>lua require("dap").run_last()<CR>'},
     },
     v = {
       -- relpace
